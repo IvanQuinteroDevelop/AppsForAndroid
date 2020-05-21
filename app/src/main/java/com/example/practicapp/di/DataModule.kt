@@ -8,7 +8,7 @@ import dagger.Provides
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton
-const val baseUrl = "https://gateway.marvel.com:443/v1/public/characters?ts="
+//const val baseUrl = "https://gateway.marvel.com:443/v1/public/characters?ts="
 
 @Module
 class DataModule {
@@ -17,12 +17,12 @@ class DataModule {
     @Singleton
     fun getRetrofit(): Retrofit {
         return Retrofit.Builder()
-            .baseUrl(baseUrl)
+            .baseUrl("https://gateway.marvel.com:443/v1/public/characters?ts=")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
     }
 
-    @Binds
+    @Provides
     @Singleton
     fun getAPIService(apiService: APIService):APIService{
         return apiService
