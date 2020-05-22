@@ -9,10 +9,10 @@ import retrofit2.http.Url
 
 interface APIService {
 
-    @GET("{ts}&hash={hash}&apikey={apikey}")
+    @GET("characters?ts={ts}&hash={hash}&apikey={apikey}")
     fun getCharacters(
         @Path("ts") ts:Int,
         @Path("hash") hash:String,
-        @Path("apikey") apikey:String
+        @Path("apiKey") apiKey:String
         ): Observable<Response<Character>>
 }
