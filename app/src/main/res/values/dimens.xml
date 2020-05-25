@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="CornerRadius_cardView">10dp</dimen>
+    <dimen name="main_tittle">26sp</dimen>
+    <dimen name="size_name">12sp</dimen>
+    <dimen name="card_elevation">5dp</dimen>
+    <dimen name="name_hero">10dp</dimen>
+    <dimen name="little_margin">8dp</dimen>
+
+</resources>
