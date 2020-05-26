@@ -16,7 +16,12 @@
     </style>
     <style name="name_style" parent="AppTheme">
         <item name="android:textSize">@dimen/size_name</item>
-        <item name="android:layout_margin">@dimen/little_margin</item>
+        <item name="android:layout_marginTop">@dimen/little_margin</item>
+        <item name="fontFamily">@font/righteous</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+    <style name="specie_style" parent="AppTheme">
+        <item name="android:textSize">@dimen/size_specie</item>
         <item name="fontFamily">@font/righteous</item>
     </style>
 
