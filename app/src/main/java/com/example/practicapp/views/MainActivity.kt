@@ -3,6 +3,8 @@ package com.example.practicapp.views
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.view.animation.AnimationUtils
+import android.view.animation.LayoutAnimationController
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -33,7 +35,7 @@ class MainActivity : AppCompatActivity() {
         heroViewModel = ViewModelProvider(this, viewModelFactory).get(HeroViewModel::class.java)
 
         val recycler = findViewById<RecyclerView>(R.id.recycler)
-        val layoutManager: RecyclerView.LayoutManager = GridLayoutManager(this, 2)
+        val layoutManager: RecyclerView.LayoutManager = GridLayoutManager(this, 3)
         recycler.setHasFixedSize(true)
         recycler.layoutManager = layoutManager
 
@@ -48,6 +50,7 @@ class MainActivity : AppCompatActivity() {
 
         mResult = responseList
         val adapter = CharactersAdapter(mResult, this)
+
         recyclerView.adapter = adapter
 
             mResult.forEach {

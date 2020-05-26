@@ -8,6 +8,6 @@ import retrofit2.http.Query
 
 interface APIService {
 
-    @GET("character/?page=7")
+    @GET("character/")
     fun getCharacters(): Call<Character>
 }

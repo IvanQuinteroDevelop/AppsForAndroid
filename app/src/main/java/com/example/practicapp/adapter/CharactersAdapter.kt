@@ -4,40 +4,41 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.Animation
+import android.view.animation.AnimationUtils
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.bumptech.glide.load.resource.bitmap.CenterCrop
-import com.bumptech.glide.load.resource.bitmap.RoundedCorners
-import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
-import com.bumptech.glide.request.RequestOptions
 import com.bumptech.glide.request.transition.DrawableCrossFadeFactory
 import com.example.practicapp.R
 import com.example.practicapp.models.Result
 
-class CharactersAdapter(private var characters: List<Result>, var  context: Context) : RecyclerView.Adapter<CharactersAdapter.ViewHolder>(){
 
+class CharactersAdapter(private var characters: List<Result>, var  context: Context) : RecyclerView.Adapter<CharactersAdapter.ViewHolder>(){
+    private var lastPosition = -1
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
         var name: TextView = view.findViewById(R.id.nameCharacter)
         var specie: TextView = view.findViewById(R.id.especieCharacter)
         var image: ImageView = view.findViewById(R.id.imageCharacter)
+        var cardView: CardView = view.findViewById(R.id.card_view)
 
-        fun bind(characters: Result, context: Context){
-            val factory = DrawableCrossFadeFactory.Builder().setCrossFadeEnabled(true).build()
+
+        fun bind(characters: Result, context: Context, position: Int){
             name.text = characters.name
             specie.text = characters.species
             Glide.with(context)
                 .load(characters.image)
-                /*.apply {
-                    RequestOptions().placeholder(R.drawable.default_image).transforms(
-                        RoundedCorners(40), CenterCrop()
-                    )
-                }
-                .transition(DrawableTransitionOptions.withCrossFade(factory))*/
+                .placeholder(R.drawable.loading_image)
+                .error(R.drawable.fallo_wifi)
                 .into(image)
-        }
+                val animation: Animation =
+                    AnimationUtils
+                        .loadAnimation(context, R.anim.animation_resource)
+                cardView.startAnimation(animation)
+                        }
     }
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -54,6 +55,6 @@ class CharactersAdapter(private var characters: List<Result>, var  context: Cont
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = characters[position]
-        holder.bind(item, this.context)
+        holder.bind(item, this.context, position)
     }
 }
