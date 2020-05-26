@@ -6,23 +6,15 @@
     android:layout_height="match_parent"
     tools:context=".views.MainActivity">
 
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/txName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/welcome"
-        style="@style/tittle_style"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerHero"
+        android:id="@+id/recycler"
         android:layout_margin="@dimen/little_margin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/txName"
         app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         tools:listitem="@layout/hero_item"
         />
 

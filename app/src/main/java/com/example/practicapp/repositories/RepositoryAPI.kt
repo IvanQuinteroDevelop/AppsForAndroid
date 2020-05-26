@@ -7,8 +7,7 @@ import javax.inject.Inject
 
 class RepositoryAPI @Inject constructor(private var apiService: APIService) {
 
-    fun getCharacters(
-    ): Call<Character> {
+    fun getCharacters(): Call<Character> {
         return apiService.getCharacters()
     }
 }

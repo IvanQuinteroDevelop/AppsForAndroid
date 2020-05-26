@@ -21,7 +21,7 @@ class DataModule {
     @Singleton
     fun getRetrofit(): Retrofit {
         return Retrofit.Builder()
-            .baseUrl("https://rickandmortyapi.com/api/character/")
+            .baseUrl("https://rickandmortyapi.com/api/")
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 //TODO Moshiconverterfactory
             .addConverterFactory(GsonConverterFactory.create())

@@ -1,4 +1,6 @@
 <resources>
     <string name="app_name">PracticApp</string>
+    <string name="specie_character">Especie</string>
+    <string name="name_character">Nombre</string>
     <string name="welcome">Bienvenido a PractiApp!</string>
 </resources>
