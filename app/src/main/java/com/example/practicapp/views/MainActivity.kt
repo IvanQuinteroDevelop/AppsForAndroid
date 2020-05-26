@@ -2,9 +2,6 @@ package com.example.practicapp.views
 
 import android.os.Bundle
 import android.util.Log
-import android.view.View
-import android.view.animation.AnimationUtils
-import android.view.animation.LayoutAnimationController
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -34,30 +31,23 @@ class MainActivity : AppCompatActivity() {
         (application as App).getComponent().inject(this)
         heroViewModel = ViewModelProvider(this, viewModelFactory).get(HeroViewModel::class.java)
 
-        val recycler = findViewById<RecyclerView>(R.id.recycler)
-        val layoutManager: RecyclerView.LayoutManager = GridLayoutManager(this, 3)
-        recycler.setHasFixedSize(true)
-        recycler.layoutManager = layoutManager
-
         heroViewModel.getCharacters()
 
         heroViewModel.resultResponse().observe(this,
-        Observer { theResponse -> methodCharacters(theResponse, recycler)})
+        Observer { theResponse -> showCharacters(theResponse)})
 
     }
 
-    fun methodCharacters(responseList: List<Result>, recyclerView: RecyclerView){
 
+    private fun showCharacters(responseList: List<Result>){
+        val recycler = findViewById<RecyclerView>(R.id.recycler)
+
+        val layoutManager: RecyclerView.LayoutManager = GridLayoutManager(this, 2)
+        recycler.setHasFixedSize(true)
+        recycler.layoutManager = layoutManager
         mResult = responseList
         val adapter = CharactersAdapter(mResult, this)
 
-        recyclerView.adapter = adapter
-
-            mResult.forEach {
-                Log.d("Nombres " , "${it.name} | ${it.image}")
-
-        }
-
-
+        recycler.adapter = adapter
     }
 }

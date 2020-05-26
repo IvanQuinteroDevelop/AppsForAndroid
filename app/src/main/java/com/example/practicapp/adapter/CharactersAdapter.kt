@@ -45,7 +45,7 @@ class CharactersAdapter(private var characters: List<Result>, var  context: Cont
         viewType: Int
     ): ViewHolder {
 
-        val layoutInflater =  LayoutInflater.from(parent.context).inflate(R.layout.hero_item, parent, false)
+        val layoutInflater =  LayoutInflater.from(parent.context).inflate(R.layout.character_item, parent, false)
         return ViewHolder(layoutInflater)
     }
 
