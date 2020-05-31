@@ -7,5 +7,6 @@
     <dimen name="card_elevation">5dp</dimen>
     <dimen name="name_hero">10dp</dimen>
     <dimen name="little_margin">8dp</dimen>
+    <dimen name="card_margin">17dp</dimen>
 
 </resources>

@@ -3,6 +3,7 @@ package com.example.practicapp.views
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.SearchView
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
@@ -11,14 +12,15 @@ import com.example.practicapp.App
 import com.example.practicapp.R
 import com.example.practicapp.adapter.CharactersAdapter
 import com.example.practicapp.models.Result
-import com.example.practicapp.viewmodels.HeroViewModel
+import com.example.practicapp.viewmodels.MyViewModel
 import com.example.practicapp.viewmodels.ViewModelFactory
+import kotlinx.android.synthetic.main.activity_main.*
 import javax.inject.Inject
 
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), SearchView.OnQueryTextListener, SearchView.OnCloseListener {
     @Inject
-    lateinit var heroViewModel: HeroViewModel
+    lateinit var myViewModel: MyViewModel
 
     @Inject
     lateinit var viewModelFactory: ViewModelFactory
@@ -29,11 +31,11 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         (application as App).getComponent().inject(this)
-        heroViewModel = ViewModelProvider(this, viewModelFactory).get(HeroViewModel::class.java)
+        myViewModel = ViewModelProvider(this, viewModelFactory).get(MyViewModel::class.java)
 
-        heroViewModel.getCharacters()
+        myViewModel.getCharacters()
 
-        heroViewModel.resultResponse().observe(this,
+        myViewModel.resultResponse().observe(this,
         Observer { theResponse -> showCharacters(theResponse)})
 
     }
@@ -47,7 +49,32 @@ class MainActivity : AppCompatActivity() {
         recycler.layoutManager = layoutManager
         mResult = responseList
         val adapter = CharactersAdapter(mResult, this)
-
         recycler.adapter = adapter
+
+        mySearch.setOnQueryTextListener(this)
+        mySearch.setOnCloseListener(this)
+
+    }
+
+    override fun onQueryTextSubmit(query: String?): Boolean {
+        filterCharacter(query)
+        return false
+    }
+
+    override fun onQueryTextChange(newText: String?): Boolean {
+        filterCharacter(newText)
+        return false
+    }
+
+    private fun filterCharacter(query: String?){
+        var name = ""
+        if (query != null && query.isNotEmpty()) {
+             name = query.trim()
+            myViewModel.searchCharacters(name)
+        }else myViewModel.getCharacters()
+    }
+
+    override fun onClose(): Boolean {
+        return true
     }
 }

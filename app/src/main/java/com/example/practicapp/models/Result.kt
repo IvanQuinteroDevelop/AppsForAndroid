@@ -1,25 +1,35 @@
 package com.example.practicapp.models
 
 
+import androidx.room.Embedded
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+import androidx.room.TypeConverters
+import com.example.practicapp.converters.ConverterEpisode
 import com.google.gson.annotations.SerializedName
 
+@Entity(tableName = "results_table")
 data class Result(
+    @SerializedName("name")
+    val name: String,
     @SerializedName("created")
     val created: String,
     @SerializedName("episode")
-    val episode: List<String>,
+    @TypeConverters(ConverterEpisode::class)
+    val episode: List<String>?,
     @SerializedName("gender")
     val gender: String,
     @SerializedName("id")
+    @PrimaryKey(autoGenerate = false)
     val id: Int,
     @SerializedName("image")
     val image: String,
     @SerializedName("location")
-    val location: Location,
-    @SerializedName("name")
-    val name: String,
+    @Embedded(prefix = "location_")
+    val location: LocationInfo?,
     @SerializedName("origin")
-    val origin: Origin,
+    @Embedded(prefix = "origin_")
+    var origin: LocationInfo?,
     @SerializedName("species")
     val species: String,
     @SerializedName("status")
