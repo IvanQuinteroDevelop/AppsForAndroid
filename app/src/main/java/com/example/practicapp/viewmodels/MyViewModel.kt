@@ -18,6 +18,7 @@ class MyViewModel @Inject constructor(var repository: Repository): ViewModel() {
     fun searchCharacters(name: String){
         responseCharacters.postValue(repository.filterCharacters(name))
     }
+
     fun resultResponse(): MutableLiveData<List<Result>> {
         return responseCharacters
     }

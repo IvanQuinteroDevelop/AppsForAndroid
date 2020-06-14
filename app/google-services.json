@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "1034855192620",
+    "firebase_url": "https://proyecto-practiapp.firebaseio.com",
+    "project_id": "proyecto-practiapp",
+    "storage_bucket": "proyecto-practiapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1034855192620:android:67c0ade4ac49681ff99989",
+        "android_client_info": {
+          "package_name": "com.example.practicapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1034855192620-qjlj7i7uggg8cdrmhu8ruee8g3sc6m0l.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDqipILsnKxwDO_mOp7eSqwH8dwF4BuyLs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1034855192620-qjlj7i7uggg8cdrmhu8ruee8g3sc6m0l.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
