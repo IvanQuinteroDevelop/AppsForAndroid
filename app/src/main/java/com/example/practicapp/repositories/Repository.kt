@@ -17,12 +17,10 @@ class Repository @Inject constructor(private var apiService: APIService, private
         refreshCharacters()
         return dao.getCharactersFromDB()
     }
-    fun refreshCharacters(){
+    private fun refreshCharacters(){
         apiService.getCharacters().enqueue(object : Callback<Character> {
             override fun onFailure(call: Call<Character>, t: Throwable) {
                 Log.d( "fallo :","Response:${t.message} || ${Gson().toJson(call.request().body())}")
-                //TODO utilizar Moshi para parsear el json
-                //val adapter: JsonAdapter<Character> = Moshi().adapter(Character::class.java)
             }
             override fun onResponse(call: Call<Character>, response: Response<Character>) {
                 if (response.isSuccessful){

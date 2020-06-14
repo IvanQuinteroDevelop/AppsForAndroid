@@ -1,6 +1,10 @@
 package com.example.practicapp.di
 
+import com.example.practicapp.StartFragment
+import com.example.practicapp.views.AuthActivity
+import com.example.practicapp.views.LoginFragment
 import com.example.practicapp.views.MainActivity
+import com.example.practicapp.views.RegisterFragment
 import dagger.Component
 import javax.inject.Singleton
 
@@ -9,4 +13,8 @@ import javax.inject.Singleton
 interface ApplicationComponent {
 
     fun inject(mainActivity: MainActivity)
+    fun inject(authActivity: AuthActivity)
+    fun inject(loginFragment: LoginFragment)
+    fun inject(registerFragment: RegisterFragment)
+    fun inject(startFragment: StartFragment)
 }

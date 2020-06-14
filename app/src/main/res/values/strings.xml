@@ -1,6 +1,17 @@
 <resources>
     <string name="app_name">PracticApp</string>
-    <string name="specie_character">Especie</string>
-    <string name="name_character">Nombre</string>
-    <string name="welcome">Bienvenido a PractiApp!</string>
+    <string name="specie_character">Specie</string>
+    <string name="name_character">Name</string>
+    <string name="welcome">Welcome to PractiApp!</string>
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="confirm_password">Confirm password</string>
+    <string name="action_sign_up">Sign up</string>
+    <string name="action_sign_in">Sign in</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password">Password must be >8 characters</string>
+    <string name="login_failed">"Login failed"</string>
+    <string name="dont_have_account">"Don't have an account ?"</string>
+    <string name="already_have_account">"Already have an account ?"</string>
+
 </resources>
