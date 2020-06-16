@@ -11,13 +11,12 @@ import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.bumptech.glide.request.transition.DrawableCrossFadeFactory
 import com.example.practicapp.R
 import com.example.practicapp.models.Result
 
 
 class CharactersAdapter(private var characters: List<Result>, var  context: Context) : RecyclerView.Adapter<CharactersAdapter.ViewHolder>(){
-    private var lastPosition = -1
+
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
         var name: TextView = view.findViewById(R.id.nameCharacter)
@@ -26,7 +25,7 @@ class CharactersAdapter(private var characters: List<Result>, var  context: Cont
         var cardView: CardView = view.findViewById(R.id.card_view)
 
 
-        fun bind(characters: Result, context: Context, position: Int){
+        fun bind(characters: Result, context: Context){
             name.text = characters.name
             specie.text = characters.species
             Glide.with(context)
@@ -55,6 +54,6 @@ class CharactersAdapter(private var characters: List<Result>, var  context: Cont
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = characters[position]
-        holder.bind(item, this.context, position)
+        holder.bind(item, this.context)
     }
 }

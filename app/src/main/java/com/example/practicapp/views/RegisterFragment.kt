@@ -5,8 +5,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 
 import com.example.practicapp.R
+import kotlinx.android.synthetic.main.fragment_register.*
 
 
 private const val ARG_PARAM1 = "param1"
@@ -23,6 +25,15 @@ class RegisterFragment : Fragment() {
             param1 = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
         }
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        go_to_sign_in.setOnClickListener {
+            val action = RegisterFragmentDirections.actionRegisterFragmentToLoginFragment()
+            findNavController().navigate(action)
+        }
+
     }
 
     override fun onCreateView(

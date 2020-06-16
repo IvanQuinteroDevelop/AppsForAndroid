@@ -14,6 +14,7 @@
         >
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/name_register"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/name_character"
@@ -30,6 +31,7 @@
         >
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/ed_register_email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/prompt_email"
@@ -46,6 +48,7 @@
         app:passwordToggleEnabled="true">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/ed_register_pass"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/prompt_password"
@@ -60,6 +63,7 @@
         app:passwordToggleEnabled="true">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/ed_confirm_pass"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/confirm_password"
@@ -71,7 +75,8 @@
         android:layout_gravity="center"
         style="@style/button_style"
         android:text="@string/action_sign_up"
-        />
+        android:onClick="onClickRegister"
+        tools:ignore="OnClick" />
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -80,6 +85,7 @@
         android:textSize="@dimen/size_name"/>
 
     <TextView
+        android:id="@+id/go_to_sign_in"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:clickable="true"

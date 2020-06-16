@@ -1,14 +1,12 @@
 package com.example.practicapp.views
 
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.example.practicapp.App
 import com.example.practicapp.R
 import com.example.practicapp.adapter.CharactersAdapter
@@ -37,7 +35,6 @@ class MainActivity : AppCompatActivity(), SearchView.OnQueryTextListener, Search
         myViewModel.getCharacters()
         myViewModel.resultResponse().observe(this,
             Observer { theResponse -> showCharacters(theResponse)})
-        //val refresh = findViewById<SwipeRefreshLayout>(R.id.refresh_character)
         refresh_character.setOnRefreshListener {
             myViewModel.getCharacters()
             refresh_character.isRefreshing = false
@@ -48,13 +45,12 @@ class MainActivity : AppCompatActivity(), SearchView.OnQueryTextListener, Search
     private fun showCharacters(responseList: List<Result>){
         val recycler = findViewById<RecyclerView>(R.id.recycler)
 
-        val layoutManager: RecyclerView.LayoutManager = GridLayoutManager(this, 3)
+        val layoutManager: RecyclerView.LayoutManager = GridLayoutManager(this, 2)
         recycler.setHasFixedSize(true)
         recycler.layoutManager = layoutManager
         mResult = responseList
         val adapter = CharactersAdapter(mResult, this)
         recycler.adapter = adapter
-        //val mySearch = findViewById<SearchView>(R.id.mySearch)
         mySearch.setOnQueryTextListener(this)
         mySearch.setOnCloseListener(this)
 
