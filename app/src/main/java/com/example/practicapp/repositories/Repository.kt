@@ -10,6 +10,7 @@ import retrofit2.Callback
 import retrofit2.Response
 import javax.inject.Inject
 import com.example.practicapp.models.Result
+import com.example.practicapp.models.User
 
 class Repository @Inject constructor(private var apiService: APIService, private var dao: Dao) {
 
@@ -33,5 +34,12 @@ class Repository @Inject constructor(private var apiService: APIService, private
 
     fun filterCharacters(name: String):List<Result>{
         return dao.searchCharacter(name)
+    }
+
+    fun insertUser(user:User){
+        dao.insertUser(user)
+    }
+    fun getUser(email: String, password: String): User{
+        return dao.getUser(email, password)
     }
 }

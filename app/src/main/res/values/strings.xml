@@ -4,6 +4,8 @@
     <string name="name_character">Name</string>
     <string name="welcome">Welcome to PractiApp!</string>
     <string name="prompt_email">Email</string>
+    <string name="required_email">Required email</string>
+    <string name="required_password">Required password</string>
     <string name="prompt_password">Password</string>
     <string name="confirm_password">Confirm password</string>
     <string name="action_sign_up">Sign up</string>

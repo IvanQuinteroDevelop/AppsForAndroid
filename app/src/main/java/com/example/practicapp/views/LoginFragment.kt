@@ -5,8 +5,13 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
+import androidx.navigation.fragment.findNavController
 
 import com.example.practicapp.R
+import com.example.practicapp.viewmodels.MyViewModel
+import com.google.android.material.textfield.TextInputEditText
+import kotlinx.android.synthetic.main.fragment_login.*
 
 
 private const val ARG_PARAM1 = "param1"
@@ -18,6 +23,7 @@ class LoginFragment : Fragment() {
     private var param1: String? = null
     private var param2: String? = null
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
@@ -26,12 +32,27 @@ class LoginFragment : Fragment() {
         }
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        go_to_register.setOnClickListener {
+           val action = LoginFragmentDirections.actionLoginFragmentToRegisterFragment()
+            findNavController().navigate(action)
+        }
+        /*sign_in_btn.setOnClickListener {
+            val email = ed_email.text
+            val password = ed_password.text
+
+            email
+        }*/
+    }
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
+
         return inflater.inflate(R.layout.fragment_login, container, false)
+
     }
 
     companion object {

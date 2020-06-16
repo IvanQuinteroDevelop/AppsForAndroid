@@ -1,6 +1,6 @@
 package com.example.practicapp.di
 
-import com.example.practicapp.StartFragment
+
 import com.example.practicapp.views.AuthActivity
 import com.example.practicapp.views.LoginFragment
 import com.example.practicapp.views.MainActivity
@@ -16,5 +16,4 @@ interface ApplicationComponent {
     fun inject(authActivity: AuthActivity)
     fun inject(loginFragment: LoginFragment)
     fun inject(registerFragment: RegisterFragment)
-    fun inject(startFragment: StartFragment)
 }
