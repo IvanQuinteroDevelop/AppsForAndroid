@@ -11,9 +11,11 @@ import com.example.practicapp.App
 import com.example.practicapp.R
 import com.example.practicapp.adapter.CharactersAdapter
 import com.example.practicapp.models.Result
+import com.example.practicapp.models.User
 import com.example.practicapp.viewmodels.MyViewModel
 import com.example.practicapp.viewmodels.ViewModelFactory
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.toolbar_main.*
 import javax.inject.Inject
 
 
@@ -23,7 +25,8 @@ class MainActivity : AppCompatActivity(), SearchView.OnQueryTextListener, Search
 
     @Inject
     lateinit var viewModelFactory: ViewModelFactory
-    lateinit var mResult : List<Result>
+    private lateinit var mResult : List<Result>
+    lateinit var user: User
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,6 +35,8 @@ class MainActivity : AppCompatActivity(), SearchView.OnQueryTextListener, Search
         (application as App).getComponent().inject(this)
         myViewModel = ViewModelProvider(this, viewModelFactory).get(MyViewModel::class.java)
 
+        user = intent.getSerializableExtra("user") as User
+        tittle_main.text = user.nameUser
         myViewModel.getCharacters()
         myViewModel.resultResponse().observe(this,
             Observer { theResponse -> showCharacters(theResponse)})
