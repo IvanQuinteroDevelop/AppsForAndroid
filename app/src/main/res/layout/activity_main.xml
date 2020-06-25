@@ -6,8 +6,10 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".views.MainActivity">
-<include layout="@layout/toolbar_main"
-    android:id="@+id/tool_bar_admin"/>
+
+
+    <include layout="@layout/toolbar_main"
+    android:id="@+id/tool_bar_main"/>
 
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:layout_width="wrap_content"

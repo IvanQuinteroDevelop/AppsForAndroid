@@ -6,7 +6,6 @@ import com.google.gson.reflect.TypeToken
 
 class ConverterEpisode {
 
-
         @TypeConverter
         fun fromString(value: String?): List<String>? {
             var listType  =
@@ -20,6 +19,5 @@ class ConverterEpisode {
             var json = gson.toJson(list).toString()
             return json
         }
-
 
 }

@@ -11,9 +11,11 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.practicapp.App
 import com.example.practicapp.R
 import com.example.practicapp.models.User
+import com.example.practicapp.utilities.Preferences
 import com.example.practicapp.viewmodels.MyViewModel
 import com.example.practicapp.viewmodels.ViewModelFactory
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.activity_auth.*
 import java.lang.Exception
 import javax.inject.Inject
@@ -22,7 +24,10 @@ class AuthActivity : AppCompatActivity() {
 @Inject
 lateinit var viewModelFactory: ViewModelFactory
 lateinit var myViewModel: MyViewModel
-    lateinit var firebaseAuth: FirebaseAuth
+    private lateinit var firebaseAuth: FirebaseAuth
+    private lateinit var firebaseDatabase: FirebaseDatabase
+    private lateinit var databaseReference: DatabaseReference
+    private lateinit var userReference: DatabaseReference
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,6 +36,10 @@ lateinit var myViewModel: MyViewModel
         myViewModel = ViewModelProvider(this, viewModelFactory).get(MyViewModel::class.java)
 
         firebaseAuth = FirebaseAuth.getInstance()
+        firebaseDatabase = FirebaseDatabase.getInstance()
+        databaseReference = firebaseDatabase.getReference("Database PractiApp")
+        databaseReference.setValue("Hello World!!")
+        userReference = firebaseDatabase.getReference("Users")
     }
 
 
@@ -48,17 +57,17 @@ lateinit var myViewModel: MyViewModel
         }
         if (valid) {
             progress_circular.visibility = View.VISIBLE
-            val user = myViewModel.getUser(email, password)
             firebaseAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener {
                 if (it.isSuccessful) {
-                    if (user.email == email && user.password == password) {
-                        goToHome(user)
-                    }
+                    val intent = Intent(this, MainActivity::class.java)
+                    startActivity(intent)
+                    finish()
                 } else {
-                    Toast.makeText(this, "Invalid user", Toast.LENGTH_LONG).show()
+                    Toast.makeText(this, "Error to sign in", Toast.LENGTH_LONG).show()
                 }
             }
         }
+        progress_circular.visibility = View.GONE
 
     }
 
@@ -85,22 +94,34 @@ lateinit var myViewModel: MyViewModel
             progress_circular.visibility = View.VISIBLE
             firebaseAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener{
                 if(it.isSuccessful){
-                    val user = User(name, email, password)
-                    
-                    myViewModel.insertUser(user)
-                    goToHome(user)
+                    val user = User(name, email)
+                    val id = firebaseAuth.currentUser!!.uid
+                    userReference.child(id).setValue(user).addOnCompleteListener {
+                        Toast.makeText(this, "Registration complete", Toast.LENGTH_SHORT).show()
+                        goToHome(user)
+                    }
                 }else{
                     Toast.makeText(this, "Error to register", Toast.LENGTH_LONG).show()
                 }
             }
         }
+        progress_circular.visibility = View.GONE
     }
 
     private fun goToHome(user: User){
         val intent = Intent(this, MainActivity::class.java)
-        Toast.makeText(this, "Welcome ${user.nameUser}", Toast.LENGTH_LONG).show()
-        intent.putExtra("user", user)
+        Preferences.saveUser(this, user)
+        Toast.makeText(this, "Welcome ${user.name}", Toast.LENGTH_LONG).show()
         startActivity(intent)
         progress_circular.visibility = View.GONE
+        finish()
+    }
+
+    override fun onStart() {
+        super.onStart()
+        if (firebaseAuth.currentUser!= null){
+            startActivity(Intent(this, MainActivity::class.java))
+        }
     }
 }
+
