@@ -38,21 +38,12 @@ class LoginFragment : Fragment() {
            val action = LoginFragmentDirections.actionLoginFragmentToRegisterFragment()
             findNavController().navigate(action)
         }
-        /*sign_in_btn.setOnClickListener {
-            val email = ed_email.text
-            val password = ed_password.text
-
-            email
-        }*/
     }
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-
         return inflater.inflate(R.layout.fragment_login, container, false)
-
     }
 
     companion object {

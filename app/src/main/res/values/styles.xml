@@ -15,23 +15,23 @@
         <item name="fontFamily">@font/righteous</item>
     </style>
     <style name="name_style" parent="AppTheme">
-        <item name="android:textSize">@dimen/size_name</item>
+        <item name="android:textSize">@dimen/name_character</item>
         <item name="android:layout_marginTop">@dimen/little_margin</item>
-        <item name="fontFamily">@font/righteous</item>
-        <item name="android:textStyle">bold</item>
-    </style>
-    <style name="specie_style" parent="AppTheme">
-        <item name="android:textSize">@dimen/size_specie</item>
-        <item name="fontFamily">@font/righteous</item>
-    </style>
+         <item name="fontFamily">@font/righteous</item>
+         <item name="android:textStyle">bold</item>
+     </style>
+     <style name="specie_style" parent="AppTheme">
+         <item name="android:textSize">@dimen/size_specie</item>
+           <item name="fontFamily">@font/righteous</item>
+       </style>
 
-    <style name="button_style" parent="AppTheme">
-        <item name="android:layout_marginLeft">@dimen/activity_horizontal_margin</item>
-        <item name="android:layout_marginRight">@dimen/activity_horizontal_margin</item>
-        <item name="android:layout_marginTop">@dimen/medium_margin</item>
-        <item name="android:layout_marginBottom">@dimen/medium_margin</item>
-        <item name="cornerRadius">@dimen/card_margin</item>
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">@dimen/height_button</item>
-    </style>
-</resources>
+       <style name="button_style" parent="AppTheme">
+           <item name="android:layout_marginLeft">@dimen/activity_horizontal_margin</item>
+           <item name="android:layout_marginRight">@dimen/activity_horizontal_margin</item>
+           <item name="android:layout_marginTop">@dimen/medium_margin</item>
+           <item name="android:layout_marginBottom">@dimen/medium_margin</item>
+           <item name="cornerRadius">@dimen/card_margin</item>
+           <item name="android:layout_width">match_parent</item>
+           <item name="android:layout_height">@dimen/height_button</item>
+       </style>
+   </resources>

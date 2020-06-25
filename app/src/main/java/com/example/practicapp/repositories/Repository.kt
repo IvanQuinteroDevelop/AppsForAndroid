@@ -21,7 +21,7 @@ class Repository @Inject constructor(private var apiService: APIService, private
     private fun refreshCharacters(){
         apiService.getCharacters().enqueue(object : Callback<Character> {
             override fun onFailure(call: Call<Character>, t: Throwable) {
-                Log.d( "fallo :","Response:${t.message} || ${Gson().toJson(call.request().body())}")
+                Log.d( "fail :","Response:${t.message} || ${Gson().toJson(call.request().body())}")
             }
             override fun onResponse(call: Call<Character>, response: Response<Character>) {
                 if (response.isSuccessful){
@@ -36,10 +36,4 @@ class Repository @Inject constructor(private var apiService: APIService, private
         return dao.searchCharacter(name)
     }
 
-    fun insertUser(user:User){
-        dao.insertUser(user)
-    }
-    fun getUser(email: String, password: String): User{
-        return dao.getUser(email, password)
-    }
 }

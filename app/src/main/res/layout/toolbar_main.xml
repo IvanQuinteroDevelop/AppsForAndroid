@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.google.android.material.appbar.AppBarLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:theme="@style/AppTheme">
@@ -23,15 +24,14 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/tittle_main"
                 android:layout_margin="@dimen/little_margin"
-                android:textSize="@dimen/size_name"
+                android:textSize="@dimen/name_user"
                 android:textStyle="bold"
                 />
             <androidx.appcompat.widget.SearchView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="right"
-                android:id="@+id/mySearch"
-                />
+                android:id="@+id/mySearch"/>
+
 
 
         </LinearLayout>
