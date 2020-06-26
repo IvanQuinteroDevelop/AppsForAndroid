@@ -58,6 +58,7 @@ class MainActivity : AppCompatActivity(), SearchView.OnQueryTextListener, Search
             refresh_character.isRefreshing = false
         }
         infoUser()
+
     }
 
     private fun infoUser(){
@@ -68,6 +69,7 @@ class MainActivity : AppCompatActivity(), SearchView.OnQueryTextListener, Search
             }
             override fun onDataChange(p0: DataSnapshot) {
                 user = p0.getValue(User::class.java)!!
+                Preferences.saveUser(this@MainActivity, user)
                 tittle_main.text = user.name
             }
         })
