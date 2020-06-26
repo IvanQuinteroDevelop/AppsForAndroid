@@ -59,8 +59,7 @@ lateinit var myViewModel: MyViewModel
             progress_circular.visibility = View.VISIBLE
             firebaseAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener {
                 if (it.isSuccessful) {
-                    val intent = Intent(this, MainActivity::class.java)
-                    startActivity(intent)
+                    goToHome()
                     finish()
                 } else {
                     Toast.makeText(this, "Error to sign in", Toast.LENGTH_LONG).show()
@@ -98,7 +97,7 @@ lateinit var myViewModel: MyViewModel
                     val id = firebaseAuth.currentUser!!.uid
                     userReference.child(id).setValue(user).addOnCompleteListener {
                         Toast.makeText(this, "Registration complete", Toast.LENGTH_SHORT).show()
-                        goToHome(user)
+                        goToHome()
                     }
                 }else{
                     Toast.makeText(this, "Error to register", Toast.LENGTH_LONG).show()
@@ -108,10 +107,8 @@ lateinit var myViewModel: MyViewModel
         progress_circular.visibility = View.GONE
     }
 
-    private fun goToHome(user: User){
+    private fun goToHome(){
         val intent = Intent(this, MainActivity::class.java)
-        Preferences.saveUser(this, user)
-        Toast.makeText(this, "Welcome ${user.name}", Toast.LENGTH_LONG).show()
         startActivity(intent)
         progress_circular.visibility = View.GONE
         finish()
